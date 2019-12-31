@@ -40,9 +40,7 @@ ether_img = pg.image.load("ressource/ether_resize.png")
 
 macgyver_start_point = "M"
 guardian_start_point = "G"
-
-needle_picked = pg.Rect((0, sprite_height * sprite_nb_height), sprite_size)
-ether_picked = pg.Rect((sprite_width, sprite_height * sprite_nb_height), sprite_size)
-plastic_picked = pg.Rect((sprite_width * 2, sprite_height * sprite_nb_height), sprite_size)
-
 wall_tag = 1
+
+level_choice = ["level1.txt", "level2.txt"]
+

@@ -5,8 +5,6 @@ from macgyver_classes import *
 item_sprite_img = pg.Surface(item_sprite_size)
 item_sprite_img.fill(GREY)
 
-
-
 """lists, dictionnary and variable that will be used to build walls and determine position of elements"""
 maze = [] # will contain the level file in array format
 structure = [] # will convert maze array format into a list
@@ -18,45 +16,44 @@ def main():
 
     picked_items = 0 # picked item counter
 
-    Level.generate(maze)
-    Level.level_structure(maze, structure, position, key_position)
+    Level.generate(maze) # Generate the maze
+    Level.level_structure(maze, structure, position, key_position) # append lists and dictionnary that will be used
 
-    macgyver = Player.rect_entity(structure, position, macgyver_start_point)
-    guardian = Player.rect_entity(structure, position, guardian_start_point)
+    macgyver = Player.rect_entity(structure, position, macgyver_start_point) # create macgyver rect
+    guardian = Player.rect_entity(structure, position, guardian_start_point) # create guardian rect
 
-    wall_structure = [indice for indice, valeur in enumerate(structure) if valeur==wall_tag]
+    wall_structure = [index for index, value in enumerate(structure) if value==wall_tag] # create a list that will be used to display walls
 
-    Player.__init__(macgyver ,actual_position, structure, position)
+    Player.__init__(macgyver ,actual_position, structure, position) # find the actual position of the player
 
+    needle = Items.items_drop(structure, position, sprite_size) # create needle rect
+    ether = Items.items_drop(structure, position, sprite_size) # create ether rect
+    plastic = Items.items_drop(structure, position, sprite_size) # create plastic rect
 
-    needle = Items.items_drop(structure, position, sprite_size)
-    ether = Items.items_drop(structure, position, sprite_size)
-    plastic = Items.items_drop(structure, position, sprite_size)
-
-    while not pg.Rect.colliderect(macgyver, guardian) :
+    while not pg.Rect.colliderect(macgyver, guardian) : # as long as the player don't reach the guardian
 
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 quit()
             elif event.type == pg.KEYDOWN:
-                if event.key == pg.K_UP:
+                if event.key == pg.K_UP: # if UP key is pressed, move up
                     Player.move_up(macgyver, actual_position, structure)
-                if event.key == pg.K_DOWN:                
+                if event.key == pg.K_DOWN: # if DOWN key is pressed, move down             
                     Player.move_down(macgyver, actual_position, structure)
-                if event.key == pg.K_LEFT:                
+                if event.key == pg.K_LEFT: # if LEFT key is pressed, move left               
                     Player.move_left(macgyver, actual_position, structure, position)          
-                if event.key == pg.K_RIGHT: 
+                if event.key == pg.K_RIGHT: # if RIGHT key is pressed, move right
                     Player.move_right(macgyver, actual_position, structure, position)
 
-        if pg.Rect.colliderect(macgyver, needle):
+        if pg.Rect.colliderect(macgyver, needle): # if the player touch the needle, it will be displayed in the collected items bar and not in the maze anymore
             needle = pg.Rect((0, sprite_height * sprite_nb_height), sprite_size)
             picked_items = picked_items + 1
 
-        if pg.Rect.colliderect(macgyver, ether):
+        if pg.Rect.colliderect(macgyver, ether): # if the player touch the ether, it will be displayed in the collected items bar and not in the maze anymore
             ether = pg.Rect((sprite_width, sprite_height * sprite_nb_height), sprite_size)
             picked_items = picked_items + 1
 
-        if pg.Rect.colliderect(macgyver, plastic):
+        if pg.Rect.colliderect(macgyver, plastic): # if the player touch the plastic, it will be displayed in the collected items bar and not in the maze anymore
             plastic = pg.Rect((sprite_width * 2, sprite_height * sprite_nb_height), sprite_size)
             picked_items = picked_items + 1
     

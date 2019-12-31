@@ -6,7 +6,7 @@ class Level:
 
     def generate(self):
         """Convert the txt file into an array named "maze" """
-        with open("level1.txt") as level_file:
+        with open(random.choice(level_choice)) as level_file:
             for line in level_file:
                 level_lines = [] 
                 for sprite in line:
@@ -17,8 +17,6 @@ class Level:
                     if sprite != '\n':
                         level_lines.append(sprite)
                 self.append(level_lines)
-
-        
 
     def level_structure(maze, structure, position, key_position): 
         """ From the generated array, will create a list of every sprite in the array and a dictionnary of every position on screen """      
@@ -32,6 +30,7 @@ class Level:
         """ Display walls on the screen """
         for elements in wall_structure :
             screen.blit(wall_img, position[elements])
+
 
 class Player:
 
@@ -81,15 +80,16 @@ class Player:
                     self.move_ip(sprite_width, 0) # ...move right !
                     actual_position[0] = [elements + 1] # define the new actual position
                     
-# items
+
 class Items:
 
     def items_drop(structure, position, sprite_size):
-        counter = 0
+        """ Create a random position for items"""
+        counter = 0 # Will be used to stop "while"
         while not counter == 1:
-            randomizer = random.randrange(0, len(structure))            
-            drop_position = structure[randomizer]           
-            if drop_position == 0:               
-                structure[drop_position] = "X"
-                counter = 1    
-        return pg.Rect(position[randomizer], sprite_size)
+            randomizer = random.randrange(0, len(structure)) # randomize a number that can match an index of structure list           
+            drop_position = structure[randomizer] # the drop position is equal to the index we randomized so we can check its value         
+            if drop_position == 0: # if the value is equal to 0, it mean that we can use the position to create an item               
+                structure[drop_position] = "X" # will avoid items to have the same position
+                counter = 1 # the problem is resolved, we can stop the while
+        return pg.Rect(position[randomizer], sprite_size) # here is our item
