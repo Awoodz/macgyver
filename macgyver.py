@@ -77,16 +77,25 @@ def main():
             plastic = pg.Rect((sprt_wdth * 2, sprt_hgt * sprt_nb_hgt), sprt_sz)
             picked_items = picked_items + 1
 
+        # display the screen
         scrn.fill(BLACK)
+        # display the picked items surface
         scrn.blit(item_sprite_img, (0, sprt_hgt * sprt_nb_hgt))
+        # display Macgyver
         scrn.blit(macgyver_img, macgyver)
+        # display the walls
         Level.draw_wall(scrn, wall_structure, pos)
+        # display the guardian
         scrn.blit(guardian_img, guardian)
+        # display the needle
         scrn.blit(needle_img, needle)
+        # display the ether
         scrn.blit(ether_img, ether)
+        # display the plastic tub
         scrn.blit(plastic_img, plastic)
         pg.display.update()
 
+    # check if players picked up all items
     if picked_items == itm_to_pick:
         print("You win !")
     else:
