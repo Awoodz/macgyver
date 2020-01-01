@@ -11,7 +11,6 @@ maze = []  # will contain the level file in array format
 struct = []  # will convert maze array format into a list
 pos = {}  # will contain every sprite positions (x, y format, in pixel)
 actual_pos = []  # determine player's position on the screen
-key_pos = 0  # will be used to determine keys in the position dictionnary
 
 
 def main():
@@ -20,7 +19,7 @@ def main():
     # Generate the maze
     Level.generate(maze)
     # append lists and dictionnary that will be used
-    Level.level_structure(maze, struct, pos, key_pos)
+    Level.level_structure(maze, struct, pos)
     # create macgyver rect
     macgyver = Player.rect_entity(struct, pos, mg_startp)
     # create guardian rect

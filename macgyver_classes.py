@@ -6,24 +6,29 @@ from macgyver_data import *
 class Level:
 
     def generate(self):
-        """Convert the txt file into an array named "maze" """
+        """Convert the txt file into an array"""
+        # open a random maze file
         with open(random.choice(level_choice)) as level_file:
             for line in level_file:
                 level_lines = []
                 for sprite in line:
-                    if sprite == '0':
-                        # the code need numbers to be int format
+                    # check if the string is a number
+                    try:
+                        # if yes, convert it to int instead of sprite
                         sprite = int(sprite)
-                    if sprite == '1':
-                        # the code need numbers to be int format
-                        sprite = int(sprite)
+                        # else, pass
+                    except ValueError:
+                        pass
+                    # check if there is a line break
                     if sprite != '\n':
                         level_lines.append(sprite)
                 self.append(level_lines)
 
-    def level_structure(maze, structure, position, key_position):
+    def level_structure(maze, structure, position):
         """ From the generated array, will create a list of every sprite
         in the array and a dictionnary of every position on screen """
+        # will be used to determine keys in the position dictionnary
+        key_position = 0
         for j, line in enumerate(maze):
             for i, case in enumerate(line):
                 structure.append(case)
@@ -74,7 +79,7 @@ class Player:
             if (elements - sprt_nb_wdth) >= 0:
                 # if the upper sprite isn't a wall
                 # (equal 1 in the structure list) :
-                if not structure[elements - sprt_nb_wdth] == 1:
+                if not structure[elements - sprt_nb_wdth] == wall_tag:
                     # ...move up !
                     self.move_ip(0, - sprt_hgt)
                     # define the new actual position
@@ -88,7 +93,7 @@ class Player:
             if (elements + sprt_nb_wdth) <= (sprt_nb_wdth * sprt_nb_hgt - 1):
                 # if the bottom sprite isn't a wall
                 # (equal 1 in the structure list) :
-                if not structure[elements + sprt_nb_wdth] == 1:
+                if not structure[elements + sprt_nb_wdth] == wall_tag:
                     # ...move down !
                     self.move_ip(0, sprt_hgt)
                     # define the new actual position
@@ -102,7 +107,7 @@ class Player:
             if not position[elements] <= (sprt_wdth, (0-scrn_hgt)):
                 # if the left sprite isn't a wall
                 # (equal 1 in the structure list) :
-                if not structure[elements - 1] == 1:
+                if not structure[elements - 1] == wall_tag:
                     # ...move left !
                     self.move_ip(- sprt_wdth, 0)
                     # define the new actual position
@@ -116,7 +121,7 @@ class Player:
             if not position[elements] >= (scrn_wdth - sprt_wdth, (0-scrn_hgt)):
                 # if the right sprite isn't a wall
                 # (equal 1 in the structure list) :
-                if not structure[elements + 1] == 1:
+                if not structure[elements + 1] == wall_tag:
                     # ...move right !
                     self.move_ip(sprt_wdth, 0)
                     # define the new actual position
@@ -137,9 +142,9 @@ class Items:
             drop_position = structure[randomizer]
             # if the value is equal to 0
             # it mean that we can use the position to create an item
-            if drop_position == 0:
+            if drop_position == void_tag:
                 # will avoid items to have the same position
-                structure[drop_position] = "X"
+                structure[drop_position] = item_tag
                 # the problem is resolved, we can stop the while
                 counter = 1
         # here is our item

@@ -49,6 +49,10 @@ mg_startp = "M"
 guardian_start_point = "G"
 # wall character
 wall_tag = 1
+# item character
+item_tag = "X"
+# void character
+void_tag = 0
 
 """MAZE LIST"""
 level_choice = ["level1.txt", "level2.txt"]
