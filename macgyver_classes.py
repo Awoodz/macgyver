@@ -14,7 +14,7 @@ class Level:
                 for sprite in line:
                     # check if the string is a number
                     try:
-                        # if yes, convert it to int instead of sprite
+                        # if yes, convert it to int instead of string
                         sprite = int(sprite)
                         # else, pass
                     except ValueError:

@@ -2,9 +2,6 @@ import pygame as pg
 from macgyver_data import *
 from macgyver_classes import *
 
-item_sprite_img = pg.Surface(itm_sprt_sz)
-item_sprite_img.fill(GREY)
-
 """lists, dictionnary and variable that will be used"""
 """to build walls and determine position of elements"""
 maze = []  # will contain the level file in array format
@@ -60,26 +57,28 @@ def main():
         # if the player touch the needle, it will be displayed
         # in the collected items bar and not in the maze anymore
         if pg.Rect.colliderect(macgyver, needle):
-            needle = pg.Rect((0, sprt_hgt * sprt_nb_hgt), sprt_sz)
+            needle = pg.Rect(needle_hub_pos, sprt_sz)
+            picked_sound.play()
             picked_items = picked_items + 1
 
         # if the player touch the ether, it will be displayed
         # in the collected items bar and not in the maze anymore
         if pg.Rect.colliderect(macgyver, ether):
-            ether = pg.Rect((sprt_wdth, sprt_hgt * sprt_nb_hgt), sprt_sz)
+            ether = pg.Rect(ether_hub_pos, sprt_sz)
+            picked_sound.play()
             picked_items = picked_items + 1
 
         # if the player touch the plastic, it will be displayed
         # it will be displayed in the collected items bar and not
         # in the maze anymore
         if pg.Rect.colliderect(macgyver, plastic):
-            plastic = pg.Rect((sprt_wdth * 2, sprt_hgt * sprt_nb_hgt), sprt_sz)
+            plastic = pg.Rect(plastic_hub_pos, sprt_sz)
             picked_items = picked_items + 1
 
         # display the screen
         scrn.fill(BLACK)
         # display the picked items surface
-        scrn.blit(item_sprite_img, (0, sprt_hgt * sprt_nb_hgt))
+        scrn.blit(itm_hub_img, itm_hub)
         # display Macgyver
         scrn.blit(macgyver_img, macgyver)
         # display the walls

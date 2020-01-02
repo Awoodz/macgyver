@@ -14,7 +14,7 @@ sprt_sz = (sprt_wdth, sprt_hgt)
 
 """PICKED ITEMS BOX 1"""
 # picked item surface height
-itm_sprte_hgt = 50
+itm_sprte_hgt = 70
 
 """SCREEN"""
 # screen width
@@ -28,7 +28,11 @@ scrn = pg.display.set_mode(scrn_sz)
 
 """PICKED ITEMS BOX 2"""
 # picked item pygame surface
-itm_sprt_sz = (scrn_wdth, itm_sprte_hgt)
+itm_hub = (0, 430)
+needle_hub_pos = (97, 444)
+ether_hub_pos = (290, 444)
+plastic_hub_pos = (498, 444)
+
 
 """COLORS"""
 BLACK = (0, 0, 0)
@@ -41,6 +45,7 @@ wall_img = pg.image.load("ressource/wall_tile.png")
 plastic_img = pg.image.load("ressource/tube_plastique_resize.png")
 needle_img = pg.image.load("ressource/aiguille_resize.png")
 ether_img = pg.image.load("ressource/ether_resize.png")
+itm_hub_img = pg.image.load("ressource/item_hub.png")
 
 """CHARACTERS IN MAZE"""
 # Macgyver start point character
@@ -60,3 +65,7 @@ level_choice = ["level1.txt", "level2.txt"]
 """ITEM"""
 # number of item to pick in order to win
 itm_to_pick = 3
+# initiate the pygame sound mixe
+pg.mixer.init()
+# sound played when an item is picked up
+picked_sound = pg.mixer.Sound("ressource/pickup.wav")
