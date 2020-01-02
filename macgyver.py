@@ -73,6 +73,7 @@ def main():
         # in the maze anymore
         if pg.Rect.colliderect(macgyver, plastic):
             plastic = pg.Rect(plastic_hub_pos, sprt_sz)
+            picked_sound.play()
             picked_items = picked_items + 1
 
         # display the screen
