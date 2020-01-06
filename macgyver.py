@@ -104,18 +104,19 @@ def main():
         scrn.fill(BLACK)
         # display the walls
         Level.draw_wall(scrn, wall_structure, pos)
+        # display Macgyver
+        scrn.blit(macgyver_img, macgyver)
         # display the guardian
         scrn.blit(guardian_img, guardian)
         # display the picked items surface
         scrn.blit(itm_hub_img, itm_hub)
-        # display Macgyver
-        scrn.blit(macgyver_img, macgyver)
         # display the needle
         scrn.blit(needle_img, needle)
         # display the ether
         scrn.blit(ether_img, ether)
         # display the plastic tub
         scrn.blit(plastic_img, plastic)
+        
 
         # check if players picked up all items
         if pg.Rect.colliderect(macgyver, guardian):
