@@ -36,16 +36,15 @@ plastic_hub_pos = (498, 444)
 
 """COLORS"""
 BLACK = (0, 0, 0)
-GREY = (50, 50, 50)
 
 """PICTURES"""
-macgyver_img = pg.image.load("ressource/MacGyver.png")
-guardian_img = pg.image.load("ressource/Gardien.png")
-wall_img = pg.image.load("ressource/wall_tile.png")
-plastic_img = pg.image.load("ressource/tube_plastique_resize.png")
-needle_img = pg.image.load("ressource/aiguille_resize.png")
-ether_img = pg.image.load("ressource/ether_resize.png")
-itm_hub_img = pg.image.load("ressource/item_hub.png")
+macgyver_img_path = "ressource/MacGyver.png"
+guardian_img_path = "ressource/Gardien.png"
+wall_img_path = "ressource/wall_tile.png"
+plastic_img_path = "ressource/tube_plastique_resize.png"
+needle_img_path = "ressource/aiguille_resize.png"
+ether_img_path = "ressource/ether_resize.png"
+itm_hub_img_path = "ressource/item_hub.png"
 
 """CHARACTERS IN MAZE"""
 # Macgyver start point character
@@ -65,7 +64,4 @@ level_choice = ["level1.txt", "level2.txt"]
 """ITEM"""
 # number of item to pick in order to win
 itm_to_pick = 3
-# initiate the pygame sound mixe
-pg.mixer.init()
-# sound played when an item is picked up
-picked_sound = pg.mixer.Sound("ressource/pickup.wav")
+picked_sound_path = "ressource/pickup.wav"

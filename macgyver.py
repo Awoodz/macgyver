@@ -1,6 +1,8 @@
 import pygame as pg
 from macgyver_data import *
-from macgyver_classes import *
+from player_class import *
+from level_class import *
+from items_class import *
 
 """lists, dictionnary and variable that will be used"""
 """to build walls and determine position of elements"""
@@ -8,6 +10,19 @@ maze = []  # will contain the level file in array format
 struct = []  # will convert maze array format into a list
 pos = {}  # will contain every sprite positions (x, y format, in pixel)
 actual_pos = []  # determine player's position on the screen
+
+macgyver_img = pg.image.load(macgyver_img_path)
+guardian_img = pg.image.load(guardian_img_path)
+wall_img = pg.image.load(wall_img_path)
+plastic_img = pg.image.load(plastic_img_path)
+needle_img = pg.image.load(needle_img_path)
+ether_img = pg.image.load(ether_img_path)
+itm_hub_img = pg.image.load(itm_hub_img_path)
+
+# initiate the pygame sound mixe
+pg.mixer.init()
+# sound played when an item is picked up
+picked_sound = pg.mixer.Sound(picked_sound_path)
 
 
 def main():
@@ -99,5 +114,6 @@ def main():
         print("You win !")
     else:
         print("You lose !")
+
 
 main()
