@@ -40,5 +40,6 @@ class Level:
     def draw_wall(surface, wall_structure, position):
         """ Display walls on the screen """
         wall_img = pg.image.load(wall_img_path)
+        scrn = pg.display.set_mode(scrn_sz)
         for elements in wall_structure:
             scrn.blit(wall_img, position[elements])

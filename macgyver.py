@@ -3,6 +3,7 @@ from macgyver_data import *
 from player_class import *
 from level_class import *
 from items_class import *
+from end_class import *
 
 """lists, dictionnary and variable that will be used"""
 """to build walls and determine position of elements"""
@@ -10,7 +11,9 @@ maze = []  # will contain the level file in array format
 struct = []  # will convert maze array format into a list
 pos = {}  # will contain every sprite positions (x, y format, in pixel)
 actual_pos = []  # determine player's position on the screen
-
+# screen pygame surface
+scrn = pg.display.set_mode(scrn_sz)
+# images load
 macgyver_img = pg.image.load(macgyver_img_path)
 guardian_img = pg.image.load(guardian_img_path)
 wall_img = pg.image.load(wall_img_path)
@@ -18,11 +21,16 @@ plastic_img = pg.image.load(plastic_img_path)
 needle_img = pg.image.load(needle_img_path)
 ether_img = pg.image.load(ether_img_path)
 itm_hub_img = pg.image.load(itm_hub_img_path)
-
+win_img = pg.image.load(win_img_path)
+lose_img = pg.image.load(lose_img_path)
 # initiate the pygame sound mixe
 pg.mixer.init()
 # sound played when an item is picked up
 picked_sound = pg.mixer.Sound(picked_sound_path)
+# sound played when the player win
+win_sound = pg.mixer.Sound(win_sound_path)
+# sound player when the player lose
+lose_sound = pg.mixer.Sound(lose_sound_path)
 
 
 def main():
@@ -50,7 +58,7 @@ def main():
     plastic = Items.items_drop(struct, pos, sprt_sz)
 
     # as long as the player don't reach the guardian
-    while not pg.Rect.colliderect(macgyver, guardian):
+    while True:
 
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -91,16 +99,14 @@ def main():
             picked_sound.play()
             picked_items = picked_items + 1
 
-        # display the screen
-        scrn.fill(BLACK)
-        # display the picked items surface
-        scrn.blit(itm_hub_img, itm_hub)
-        # display Macgyver
-        scrn.blit(macgyver_img, macgyver)
         # display the walls
         Level.draw_wall(scrn, wall_structure, pos)
         # display the guardian
         scrn.blit(guardian_img, guardian)
+        # display the picked items surface
+        scrn.blit(itm_hub_img, itm_hub)
+        # display Macgyver
+        scrn.blit(macgyver_img, macgyver)
         # display the needle
         scrn.blit(needle_img, needle)
         # display the ether
@@ -109,11 +115,12 @@ def main():
         scrn.blit(plastic_img, plastic)
         pg.display.update()
 
-    # check if players picked up all items
-    if picked_items == itm_to_pick:
-        print("You win !")
-    else:
-        print("You lose !")
+        # check if players picked up all items
+        if pg.Rect.colliderect(macgyver, guardian):
+            if picked_items == itm_to_pick:
+                end(scrn, win_img, win_sound)
+            else:
+                end(scrn, lose_img, lose_sound)
 
 
 main()

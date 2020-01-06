@@ -1,5 +1,3 @@
-import pygame as pg
-
 """SPRITE"""
 # sprite height (pixel)
 sprt_hgt = 43
@@ -23,8 +21,6 @@ scrn_wdth = sprt_nb_wdth * sprt_wdth
 scrn_hgt = (sprt_nb_hgt * sprt_hgt) + itm_sprte_hgt
 # screen size
 scrn_sz = (scrn_wdth, scrn_hgt)
-# screen pygame surface
-scrn = pg.display.set_mode(scrn_sz)
 
 """PICKED ITEMS BOX 2"""
 # picked item pygame surface
@@ -32,10 +28,6 @@ itm_hub = (0, 430)
 needle_hub_pos = (97, 444)
 ether_hub_pos = (290, 444)
 plastic_hub_pos = (498, 444)
-
-
-"""COLORS"""
-BLACK = (0, 0, 0)
 
 """PICTURES"""
 macgyver_img_path = "ressource/MacGyver.png"
@@ -45,6 +37,8 @@ plastic_img_path = "ressource/tube_plastique_resize.png"
 needle_img_path = "ressource/aiguille_resize.png"
 ether_img_path = "ressource/ether_resize.png"
 itm_hub_img_path = "ressource/item_hub.png"
+win_img_path = "ressource/you_win.png"
+lose_img_path = "ressource/you_lose.png"
 
 """CHARACTERS IN MAZE"""
 # Macgyver start point character
@@ -65,3 +59,5 @@ level_choice = ["level1.txt", "level2.txt"]
 # number of item to pick in order to win
 itm_to_pick = 3
 picked_sound_path = "ressource/pickup.wav"
+win_sound_path = "ressource/you_win.wav"
+lose_sound_path = "ressource/you_lose.wav"
