@@ -34,6 +34,7 @@ lose_sound = pg.mixer.Sound(lose_sound_path)
 
 
 def main():
+    """Launch the Macgyver game !"""
     # picked item counter
     picked_items = 0
     # Generate the maze
@@ -99,6 +100,8 @@ def main():
             picked_sound.play()
             picked_items = picked_items + 1
 
+        pg.display.update()
+        scrn.fill(BLACK)
         # display the walls
         Level.draw_wall(scrn, wall_structure, pos)
         # display the guardian
@@ -113,7 +116,6 @@ def main():
         scrn.blit(ether_img, ether)
         # display the plastic tub
         scrn.blit(plastic_img, plastic)
-        pg.display.update()
 
         # check if players picked up all items
         if pg.Rect.colliderect(macgyver, guardian):

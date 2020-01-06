@@ -6,7 +6,7 @@ from macgyver_data import *
 class Level:
 
     def generate(self):
-        """Convert the txt file into an array"""
+        """Convert the txt level file into an array"""
         # open a random maze file
         with open(random.choice(level_choice)) as level_file:
             for line in level_file:

@@ -14,6 +14,9 @@ sprt_sz = (sprt_wdth, sprt_hgt)
 # picked item surface height
 itm_sprte_hgt = 70
 
+"""COLOR"""
+BLACK = (0, 0, 0)
+
 """SCREEN"""
 # screen width
 scrn_wdth = sprt_nb_wdth * sprt_wdth
