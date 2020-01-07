@@ -1,4 +1,4 @@
-What is it ?
+#What is it ?
 
 It is a game ! Help Macgyver to collect the three items randomly spawned in the maze then defeat the guardian !
 
