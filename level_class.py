@@ -1,4 +1,3 @@
-import pygame as pg
 import random
 from macgyver_data import *
 
@@ -37,9 +36,7 @@ class Level:
                 position[key_position] = (i*sprt_wdth, j*sprt_hgt)
                 key_position = key_position + 1
 
-    def draw_wall(surface, wall_structure, position):
-        """ Display walls on the screen """
-        wall_img = pg.image.load(wall_img_path)
-        scrn = pg.display.set_mode(scrn_sz)
-        for elements in wall_structure:
-            scrn.blit(wall_img, position[elements])
+    def draw_level(surface, level_structure, position, img):
+        """ Display walls or floor on the screen """
+        for elements in level_structure:
+            surface.blit(img, position[elements])

@@ -17,6 +17,7 @@ scrn = pg.display.set_mode(scrn_sz)
 macgyver_img = pg.image.load(macgyver_img_path)
 guardian_img = pg.image.load(guardian_img_path)
 wall_img = pg.image.load(wall_img_path)
+floor_img = pg.image.load(floor_img_path)
 plastic_img = pg.image.load(plastic_img_path)
 needle_img = pg.image.load(needle_img_path)
 ether_img = pg.image.load(ether_img_path)
@@ -50,6 +51,10 @@ def main():
     # create a list that will be used to display walls
     wall_structure = [
         index for index, value in enumerate(struct) if value == wall_tag
+    ]
+    # create a list that will be used to display floor
+    floor_structure = [
+        index for index, value in enumerate(struct) if value != wall_tag
     ]
     # find the actual position of the player
     Player.__init__(macgyver, actual_pos, struct, pos)
@@ -107,7 +112,9 @@ def main():
         pg.display.update()
         scrn.fill(BLACK)
         # display the walls
-        Level.draw_wall(scrn, wall_structure, pos)
+        Level.draw_level(scrn, wall_structure, pos, wall_img)
+        # display the floor tiles
+        Level.draw_level(scrn, floor_structure, pos, floor_img)
         # display Macgyver
         scrn.blit(macgyver_img, macgyver)
         # display the guardian

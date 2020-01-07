@@ -36,6 +36,7 @@ plastic_hub_pos = (498, 444)
 macgyver_img_path = "ressource/MacGyver.png"
 guardian_img_path = "ressource/Gardien.png"
 wall_img_path = "ressource/wall_tile.png"
+floor_img_path = "ressource/floor_tile.png"
 plastic_img_path = "ressource/tube_plastique_resize.png"
 needle_img_path = "ressource/aiguille_resize.png"
 ether_img_path = "ressource/ether_resize.png"
