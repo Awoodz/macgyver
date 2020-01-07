@@ -3,7 +3,7 @@ from macgyver_data import *
 from player_class import *
 from level_class import *
 from items_class import *
-from end_class import *
+from helpers import end
 
 """lists, dictionnary and variable that will be used"""
 """to build walls and determine position of elements"""
@@ -29,8 +29,10 @@ pg.mixer.init()
 picked_sound = pg.mixer.Sound(picked_sound_path)
 # sound played when the player win
 win_sound = pg.mixer.Sound(win_sound_path)
-# sound player when the player lose
+# sound played when the player lose
 lose_sound = pg.mixer.Sound(lose_sound_path)
+# music played in background
+level_music = pg.mixer.music.load(level_music_path)
 
 
 def main():
@@ -57,6 +59,8 @@ def main():
     ether = Items.items_drop(struct, pos, sprt_sz)
     # create plastic rect
     plastic = Items.items_drop(struct, pos, sprt_sz)
+    # play the background music
+    pg.mixer.music.play()
 
     # as long as the player don't reach the guardian
     while True:
@@ -116,7 +120,6 @@ def main():
         scrn.blit(ether_img, ether)
         # display the plastic tub
         scrn.blit(plastic_img, plastic)
-        
 
         # check if players picked up all items
         if pg.Rect.colliderect(macgyver, guardian):

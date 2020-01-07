@@ -56,11 +56,17 @@ item_tag = "X"
 void_tag = 0
 
 """MAZE LIST"""
-level_choice = ["level1.txt", "level2.txt"]
+level_choice = [
+    "ressource/level1.txt",
+    "ressource/level2.txt"
+]
 
 """ITEM"""
 # number of item to pick in order to win
 itm_to_pick = 3
 picked_sound_path = "ressource/pickup.wav"
+
+"""SOUND"""
 win_sound_path = "ressource/you_win.wav"
 lose_sound_path = "ressource/you_lose.wav"
+level_music_path = "ressource/music8b.wav"
