@@ -11,7 +11,7 @@ class Player:
         #  to the macgyver start point caracter and create a list
         #  with all those index
         start_position = [
-            index for index, values in enumerate(struct) if values == mg_startp
+            index for index, values in enumerate(struct) if values == MG_STARTP
             ]
         # avoid a bug when start point is upper left corner...
         if start_position == []:
@@ -28,47 +28,47 @@ class Player:
             index for index, values in enumerate(struct) if values == ent_start
             ]
         for elements in entity:
-            return pg.Rect(position[elements], sprt_sz)
+            return pg.Rect(position[elements], SPRT_SZ)
 
     def move_up(self, actual_position, structure):
         """ Move the character up if possible """
         # getting the actual position value
         for elements in actual_position[0]:
             # check if the player isn't on the top border of the screen
-            if (elements - sprt_nb_wdth) >= 0:
+            if (elements - SPRT_NB_WDTH) >= 0:
                 # if the upper sprite isn't a wall
                 # (equal 1 in the structure list) :
-                if not structure[elements - sprt_nb_wdth] == wall_tag:
+                if not structure[elements - SPRT_NB_WDTH] == WALL_TAG:
                     # ...move up !
-                    self.move_ip(0, - sprt_hgt)
+                    self.move_ip(0, - SPRT_HGT)
                     # define the new actual position
-                    actual_position[0] = [elements - sprt_nb_wdth]
+                    actual_position[0] = [elements - SPRT_NB_WDTH]
 
     def move_down(self, actual_position, structure):
         """ Move the character down if possible """
         # getting the actual position value
         for elements in actual_position[0]:
             # check if the player isn't on the bottom border of the screen
-            if (elements + sprt_nb_wdth) <= (sprt_nb_wdth * sprt_nb_hgt - 1):
+            if (elements + SPRT_NB_WDTH) <= (SPRT_NB_WDTH * SPRT_NB_HGT - 1):
                 # if the bottom sprite isn't a wall
                 # (equal 1 in the structure list) :
-                if not structure[elements + sprt_nb_wdth] == wall_tag:
+                if not structure[elements + SPRT_NB_WDTH] == WALL_TAG:
                     # ...move down !
-                    self.move_ip(0, sprt_hgt)
+                    self.move_ip(0, SPRT_HGT)
                     # define the new actual position
-                    actual_position[0] = [elements + sprt_nb_wdth]
+                    actual_position[0] = [elements + SPRT_NB_WDTH]
 
     def move_left(self, actual_position, structure, position):
         """ Move the character left if possible """
         # getting the actual position value
         for elements in actual_position[0]:
             # check if the player isn't on the left border of the screen
-            if not position[elements] <= (sprt_wdth, (0-scrn_hgt)):
+            if not position[elements] <= (SPRT_WDTH, (0-SCRN_HGT)):
                 # if the left sprite isn't a wall
                 # (equal 1 in the structure list) :
-                if not structure[elements - 1] == wall_tag:
+                if not structure[elements - 1] == WALL_TAG:
                     # ...move left !
-                    self.move_ip(- sprt_wdth, 0)
+                    self.move_ip(- SPRT_WDTH, 0)
                     # define the new actual position
                     actual_position[0] = [elements - 1]
 
@@ -77,11 +77,11 @@ class Player:
         # getting the actual position value
         for elements in actual_position[0]:
             # check if the player isn't on the right border of the screen
-            if not position[elements] >= (scrn_wdth - sprt_wdth, (0-scrn_hgt)):
+            if not position[elements] >= (SCRN_WDTH - SPRT_WDTH, (0-SCRN_HGT)):
                 # if the right sprite isn't a wall
                 # (equal 1 in the structure list) :
-                if not structure[elements + 1] == wall_tag:
+                if not structure[elements + 1] == WALL_TAG:
                     # ...move right !
-                    self.move_ip(sprt_wdth, 0)
+                    self.move_ip(SPRT_WDTH, 0)
                     # define the new actual position
                     actual_position[0] = [elements + 1]

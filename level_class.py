@@ -1,4 +1,5 @@
 import random
+
 from macgyver_data import *
 
 
@@ -7,7 +8,7 @@ class Level:
     def generate(self):
         """Convert the txt level file into an array"""
         # open a random maze file
-        with open(random.choice(level_choice)) as level_file:
+        with open(random.choice(LEVEL_CHOICE)) as level_file:
             for line in level_file:
                 level_lines = []
                 for sprite in line:
@@ -33,7 +34,7 @@ class Level:
                 structure.append(case)
                 # Keys in position dictionnary will be the same
                 # that the indexes of the structure list.
-                position[key_position] = (i*sprt_wdth, j*sprt_hgt)
+                position[key_position] = (i*SPRT_WDTH, j*SPRT_HGT)
                 key_position = key_position + 1
 
     def draw_level(surface, level_structure, position, img):

@@ -1,73 +1,73 @@
 """SPRITE"""
 # sprite height (pixel)
-sprt_hgt = 43
+SPRT_HGT = 43
 # number of sprite in screen height
-sprt_nb_hgt = 10
+SPRT_NB_HGT = 10
 # sprite width (pixel)
-sprt_wdth = 43
+SPRT_WDTH = 43
 # number of sprite in screen width
-sprt_nb_wdth = 15
+SPRT_NB_WDTH = 15
 # sprite size (pixel)
-sprt_sz = (sprt_wdth, sprt_hgt)
+SPRT_SZ = (SPRT_WDTH, SPRT_HGT)
 
 """PICKED ITEMS BOX 1"""
 # picked item surface height
-itm_sprte_hgt = 70
+ITM_SPRT_HGT = 70
 
 """COLOR"""
 BLACK = (0, 0, 0)
 
 """SCREEN"""
 # screen width
-scrn_wdth = sprt_nb_wdth * sprt_wdth
+SCRN_WDTH = SPRT_NB_WDTH * SPRT_WDTH
 # screen height
-scrn_hgt = (sprt_nb_hgt * sprt_hgt) + itm_sprte_hgt
+SCRN_HGT = (SPRT_NB_HGT * SPRT_HGT) + ITM_SPRT_HGT
 # screen size
-scrn_sz = (scrn_wdth, scrn_hgt)
+SCRN_SZ = (SCRN_WDTH, SCRN_HGT)
 
 """PICKED ITEMS BOX 2"""
 # picked item pygame surface
-itm_hub = (0, 430)
-needle_hub_pos = (97, 444)
-ether_hub_pos = (290, 444)
-plastic_hub_pos = (498, 444)
+ITM_HUB_POS = (0, SPRT_NB_HGT * SPRT_HGT)
+NEEDLE_HUB_POS = (97, 444)
+ETHER_HUB_POS = (290, 444)
+PLASTIC_HUB_POS = (498, 444)
 
 """PICTURES"""
-macgyver_img_path = "ressource/MacGyver.png"
-guardian_img_path = "ressource/Gardien.png"
-wall_img_path = "ressource/wall_tile.png"
-floor_img_path = "ressource/floor_tile.png"
-plastic_img_path = "ressource/tube_plastique_resize.png"
-needle_img_path = "ressource/aiguille_resize.png"
-ether_img_path = "ressource/ether_resize.png"
-itm_hub_img_path = "ressource/item_hub.png"
-win_img_path = "ressource/you_win.png"
-lose_img_path = "ressource/you_lose.png"
+MACGYVER_IMG_PATH = "ressource/MacGyver.png"
+GUARDIAN_IMG_PATH = "ressource/Gardien.png"
+WALL_IMG_PATH = "ressource/wall_tile.png"
+FLOOR_IMG_PATH = "ressource/floor_tile.png"
+PLASTIC_IMG_PATH = "ressource/tube_plastique_resize.png"
+NEEDLE_IMG_PATH = "ressource/aiguille_resize.png"
+ETHER_IMG_PATH = "ressource/ether_resize.png"
+ITM_HUB_IMG_PATH = "ressource/item_hub.png"
+WIN_IMG_PATH = "ressource/you_win.png"
+LOSE_IMG_PATH = "ressource/you_lose.png"
 
 """CHARACTERS IN MAZE"""
 # Macgyver start point character
-mg_startp = "M"
+MG_STARTP = "M"
 # Guardian start point character
-guardian_start_point = "G"
+GUARDIAN_STARTP = "G"
 # wall character
-wall_tag = 1
+WALL_TAG = 1
 # item character
-item_tag = "X"
+ITEM_TAG = "X"
 # void character
-void_tag = 0
+VOID_TAG = 0
 
 """MAZE LIST"""
-level_choice = [
+LEVEL_CHOICE = [
     "ressource/level1.txt",
     "ressource/level2.txt"
 ]
 
 """ITEM"""
 # number of item to pick in order to win
-itm_to_pick = 3
-picked_sound_path = "ressource/pickup.wav"
+ITM_TO_PICK = 3
 
 """SOUND"""
-win_sound_path = "ressource/you_win.wav"
-lose_sound_path = "ressource/you_lose.wav"
-level_music_path = "ressource/music8b.wav"
+PICKED_SOUND_PATH = "ressource/pickup.wav"
+WIN_SOUND_PATH = "ressource/you_win.wav"
+LOSE_SOUND_PATH = "ressource/you_lose.wav"
+LEVEL_MUSIC_PATH = "ressource/music8b.wav"

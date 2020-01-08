@@ -17,9 +17,9 @@ class Items:
             drop_position = structure[randomizer]
             # if the value is equal to 0
             # it mean that we can use the position to create an item
-            if drop_position == void_tag:
+            if drop_position == VOID_TAG:
                 # will avoid items to have the same position
-                structure[drop_position] = item_tag
+                structure[drop_position] = ITEM_TAG
                 # the problem is resolved, we can stop the while
                 counter = 1
         # here is our item

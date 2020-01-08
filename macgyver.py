@@ -12,28 +12,28 @@ struct = []  # will convert maze array format into a list
 pos = {}  # will contain every sprite positions (x, y format, in pixel)
 actual_pos = []  # determine player's position on the screen
 # screen pygame surface
-scrn = pg.display.set_mode(scrn_sz)
+scrn = pg.display.set_mode(SCRN_SZ)
 # images load
-macgyver_img = pg.image.load(macgyver_img_path)
-guardian_img = pg.image.load(guardian_img_path)
-wall_img = pg.image.load(wall_img_path)
-floor_img = pg.image.load(floor_img_path)
-plastic_img = pg.image.load(plastic_img_path)
-needle_img = pg.image.load(needle_img_path)
-ether_img = pg.image.load(ether_img_path)
-itm_hub_img = pg.image.load(itm_hub_img_path)
-win_img = pg.image.load(win_img_path)
-lose_img = pg.image.load(lose_img_path)
+macgyver_img = pg.image.load(MACGYVER_IMG_PATH)
+guardian_img = pg.image.load(GUARDIAN_IMG_PATH)
+wall_img = pg.image.load(WALL_IMG_PATH)
+floor_img = pg.image.load(FLOOR_IMG_PATH)
+plastic_img = pg.image.load(PLASTIC_IMG_PATH)
+needle_img = pg.image.load(NEEDLE_IMG_PATH)
+ether_img = pg.image.load(ETHER_IMG_PATH)
+itm_hub_img = pg.image.load(ITM_HUB_IMG_PATH)
+win_img = pg.image.load(WIN_IMG_PATH)
+lose_img = pg.image.load(LOSE_IMG_PATH)
 # initiate the pygame sound mixe
 pg.mixer.init()
 # sound played when an item is picked up
-picked_sound = pg.mixer.Sound(picked_sound_path)
+picked_sound = pg.mixer.Sound(PICKED_SOUND_PATH)
 # sound played when the player win
-win_sound = pg.mixer.Sound(win_sound_path)
+win_sound = pg.mixer.Sound(WIN_SOUND_PATH)
 # sound played when the player lose
-lose_sound = pg.mixer.Sound(lose_sound_path)
+lose_sound = pg.mixer.Sound(LOSE_SOUND_PATH)
 # music played in background
-level_music = pg.mixer.music.load(level_music_path)
+level_music = pg.mixer.music.load(LEVEL_MUSIC_PATH)
 
 
 def main():
@@ -45,25 +45,25 @@ def main():
     # append lists and dictionnary that will be used
     Level.level_structure(maze, struct, pos)
     # create macgyver rect
-    macgyver = Player.rect_entity(struct, pos, mg_startp)
+    macgyver = Player.rect_entity(struct, pos, MG_STARTP)
     # create guardian rect
-    guardian = Player.rect_entity(struct, pos, guardian_start_point)
+    guardian = Player.rect_entity(struct, pos, GUARDIAN_STARTP)
     # create a list that will be used to display walls
     wall_structure = [
-        index for index, value in enumerate(struct) if value == wall_tag
+        index for index, value in enumerate(struct) if value == WALL_TAG
     ]
     # create a list that will be used to display floor
     floor_structure = [
-        index for index, value in enumerate(struct) if value != wall_tag
+        index for index, value in enumerate(struct) if value != WALL_TAG
     ]
     # find the actual position of the player
     Player.__init__(macgyver, actual_pos, struct, pos)
     # create needle rect
-    needle = Items.items_drop(struct, pos, sprt_sz)
+    needle = Items.items_drop(struct, pos, SPRT_SZ)
     # create ether rect
-    ether = Items.items_drop(struct, pos, sprt_sz)
+    ether = Items.items_drop(struct, pos, SPRT_SZ)
     # create plastic rect
-    plastic = Items.items_drop(struct, pos, sprt_sz)
+    plastic = Items.items_drop(struct, pos, SPRT_SZ)
     # play the background music
     pg.mixer.music.play()
 
@@ -90,14 +90,14 @@ def main():
         # if the player touch the needle, it will be displayed
         # in the collected items bar and not in the maze anymore
         if pg.Rect.colliderect(macgyver, needle):
-            needle = pg.Rect(needle_hub_pos, sprt_sz)
+            needle = pg.Rect(NEEDLE_HUB_POS, SPRT_SZ)
             picked_sound.play()
             picked_items = picked_items + 1
 
         # if the player touch the ether, it will be displayed
         # in the collected items bar and not in the maze anymore
         if pg.Rect.colliderect(macgyver, ether):
-            ether = pg.Rect(ether_hub_pos, sprt_sz)
+            ether = pg.Rect(ETHER_HUB_POS, SPRT_SZ)
             picked_sound.play()
             picked_items = picked_items + 1
 
@@ -105,7 +105,7 @@ def main():
         # it will be displayed in the collected items bar and not
         # in the maze anymore
         if pg.Rect.colliderect(macgyver, plastic):
-            plastic = pg.Rect(plastic_hub_pos, sprt_sz)
+            plastic = pg.Rect(PLASTIC_HUB_POS, SPRT_SZ)
             picked_sound.play()
             picked_items = picked_items + 1
 
@@ -120,7 +120,7 @@ def main():
         # display the guardian
         scrn.blit(guardian_img, guardian)
         # display the picked items surface
-        scrn.blit(itm_hub_img, itm_hub)
+        scrn.blit(itm_hub_img, ITM_HUB_POS)
         # display the needle
         scrn.blit(needle_img, needle)
         # display the ether
@@ -130,7 +130,7 @@ def main():
 
         # check if players picked up all items
         if pg.Rect.colliderect(macgyver, guardian):
-            if picked_items == itm_to_pick:
+            if picked_items == ITM_TO_PICK:
                 end(scrn, win_img, win_sound)
             else:
                 end(scrn, lose_img, lose_sound)
