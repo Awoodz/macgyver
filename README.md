@@ -1,11 +1,11 @@
-# What is it ?
-  * It is a game ! Help Macgyver to collect the three items randomly spawned in the maze then defeat the guardian !
+# Qu'est ce que c'est ?
+  * C'est un jeu ! Il faut aider MacGyver à collecter les objets puis le guider jusqu'au gardien du labyrinthe.
 
-# How to install the game ?
-  * Download the repository then unzip it in the wanted path
-  * Be sure to have the latest version of python (https://www.python.org/downloads/release)
-  * Install pygame (use your favorite CLI and type "pip install pygame")
-  * Again with the CLI, go to the game path then type "py macgyver.py" ("python3 macgyver.py" on Mac OS)
-
-# How do I play ?
-  * Just use the arrow keys
+# Comment l'installer ?
+  * Téléchargez le repository et décompressez le au chemin de votre choix
+  * Assurez vous d'avoir une version récente de Python (https://www.python.org/downloads/release)(jeu developpé sous Python3.7.4)
+  * Installez le module Pygame.py (entrez la commande "pip install pygame" dans votre interface de ligne de commande)
+  * Toujours avec votre interface de ligne de commande, allez au fichier du jeu puis entrez "py macgyver.py" ("python3 macgyver.py" sur macOS)
+  
+# Comment jouer ?
+  * Il suffit d'appuyer sur les touches directionnelles du clavier
