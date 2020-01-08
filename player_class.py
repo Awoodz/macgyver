@@ -12,7 +12,7 @@ class Player:
         #  with all those index
         start_position = [
             index for index, values in enumerate(struct) if values == MG_STARTP
-            ]
+        ]
         # avoid a bug when start point is upper left corner...
         if start_position == []:
             # ...giving it a value = 0
@@ -26,7 +26,7 @@ class Player:
         # with all those index
         entity = [
             index for index, values in enumerate(struct) if values == ent_start
-            ]
+        ]
         for elements in entity:
             return pg.Rect(position[elements], SPRT_SZ)
 
@@ -58,12 +58,12 @@ class Player:
                     # define the new actual position
                     actual_position[0] = [elements + SPRT_NB_WDTH]
 
-    def move_left(self, actual_position, structure, position):
+    def move_left(self, actual_position, structure, pos):
         """ Move the character left if possible """
         # getting the actual position value
         for elements in actual_position[0]:
             # check if the player isn't on the left border of the screen
-            if not position[elements] <= (SPRT_WDTH, (0-SCRN_HGT)):
+            if not pos[elements] <= (SPRT_WDTH, (0 - SCRN_HGT)):
                 # if the left sprite isn't a wall
                 # (equal 1 in the structure list) :
                 if not structure[elements - 1] == WALL_TAG:
@@ -72,12 +72,12 @@ class Player:
                     # define the new actual position
                     actual_position[0] = [elements - 1]
 
-    def move_right(self, actual_position, structure, position):
+    def move_right(self, actual_position, structure, pos):
         """ Move the character right if possible """
         # getting the actual position value
         for elements in actual_position[0]:
             # check if the player isn't on the right border of the screen
-            if not position[elements] >= (SCRN_WDTH - SPRT_WDTH, (0-SCRN_HGT)):
+            if not pos[elements] >= (SCRN_WDTH - SPRT_WDTH, (0 - SCRN_HGT)):
                 # if the right sprite isn't a wall
                 # (equal 1 in the structure list) :
                 if not structure[elements + 1] == WALL_TAG:

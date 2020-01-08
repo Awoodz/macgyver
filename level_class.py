@@ -34,7 +34,7 @@ class Level:
                 structure.append(case)
                 # Keys in position dictionnary will be the same
                 # that the indexes of the structure list.
-                position[key_position] = (i*SPRT_WDTH, j*SPRT_HGT)
+                position[key_position] = (i * SPRT_WDTH, j * SPRT_HGT)
                 key_position = key_position + 1
 
     def draw_level(surface, level_structure, position, img):
