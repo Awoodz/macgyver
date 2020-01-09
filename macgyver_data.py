@@ -28,20 +28,33 @@ SCRN_SZ = (SCRN_WDTH, SCRN_HGT)
 """PICKED ITEMS BOX 2"""
 # picked item pygame surface
 ITM_HUB_POS = (0, SPRT_NB_HGT * SPRT_HGT)
+# position of needle in item hub
 NEEDLE_HUB_POS = (97, 444)
+# position of ether in item hub
 ETHER_HUB_POS = (290, 444)
+# position of plastic tub in item hub
 PLASTIC_HUB_POS = (498, 444)
 
 """PICTURES"""
+# macgyver sprite path
 MACGYVER_IMG_PATH = "ressource/MacGyver.png"
+# guardian sprite path
 GUARDIAN_IMG_PATH = "ressource/Gardien.png"
+# wall sprite path
 WALL_IMG_PATH = "ressource/wall_tile.png"
+# floor sprite path
 FLOOR_IMG_PATH = "ressource/floor_tile.png"
+# plastic tube sprite path
 PLASTIC_IMG_PATH = "ressource/tube_plastique_resize.png"
+# needle sprite path
 NEEDLE_IMG_PATH = "ressource/aiguille_resize.png"
+# ether sprite path
 ETHER_IMG_PATH = "ressource/ether_resize.png"
+# item hub sprite path
 ITM_HUB_IMG_PATH = "ressource/item_hub.png"
+# win screen image path
 WIN_IMG_PATH = "ressource/you_win.png"
+# lose screen image path
 LOSE_IMG_PATH = "ressource/you_lose.png"
 
 """CHARACTERS IN MAZE"""
@@ -67,7 +80,11 @@ LEVEL_CHOICE = [
 ITM_TO_PICK = 3
 
 """SOUND"""
+# picking item sound path
 PICKED_SOUND_PATH = "ressource/pickup.wav"
+# win sound path
 WIN_SOUND_PATH = "ressource/you_win.wav"
+# lose sound path
 LOSE_SOUND_PATH = "ressource/you_lose.wav"
+# music sound path
 LEVEL_MUSIC_PATH = "ressource/music8b.wav"
