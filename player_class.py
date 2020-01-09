@@ -3,6 +3,7 @@ from macgyver_data import *
 
 
 class Player:
+    """This class is focused on the character in game"""
 
     def __init__(self, actual_position, struct, position):
         """find the starting position + define the start

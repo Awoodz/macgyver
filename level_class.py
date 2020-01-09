@@ -4,6 +4,7 @@ from macgyver_data import *
 
 
 class Level:
+    """This class is focused on the maze generation"""
 
     def generate(self):
         """Convert the txt level file into an array"""

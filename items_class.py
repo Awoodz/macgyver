@@ -4,6 +4,7 @@ from macgyver_data import *
 
 
 class Items:
+    """This class if focused on items in game"""
 
     def items_drop(structure, position, sprite_size):
         """ Create a random position for items"""
